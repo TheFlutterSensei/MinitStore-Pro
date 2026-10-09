@@ -10,6 +10,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('MiniStore Pro')),
+      body: SafeArea(child: Center(child: const Text('Home Screen'))),
+    );
   }
 }

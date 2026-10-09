@@ -10,6 +10,9 @@ class HelpScreen extends StatefulWidget {
 class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Help')),
+      body: SafeArea(child: Center(child: const Text('Help Screen'))),
+    );
   }
 }

@@ -10,6 +10,9 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Settings')),
+      body: SafeArea(child: Center(child: const Text('Settings Screen'))),
+    );
   }
 }
