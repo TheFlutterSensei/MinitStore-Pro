@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ministore_pro/contants/form_styles.dart';
 import 'package:ministore_pro/contants/spacing.dart';
 import 'package:ministore_pro/data/products.dart';
 import 'package:ministore_pro/widgets/product_card.dart';
@@ -27,7 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(Spacing.md),
-              child: TextField(controller: _searchController),
+              child: TextField(
+                controller: _searchController,
+                decoration: FormStyles.textFieldStyle.copyWith(
+                  labelText: 'Search Products',
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  prefixIcon: const Icon(Icons.search),
+                ),
+              ),
             ),
             Expanded(
               child: products.isEmpty
