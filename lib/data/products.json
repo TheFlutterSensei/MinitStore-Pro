@@ -1,0 +1,134 @@
+[
+    {
+        "id": "P001",
+        "image": "https://picsum.photos/seed/P001/400/400",
+        "title": "Organic Cotton T‑Shirt",
+        "shortDescription": "Soft, breathable tee made from 100% organic cotton.",
+        "detailedDescription": "A classic crew‑neck t‑shirt crafted from sustainably grown organic cotton. It’s gentle on the skin, lightweight, and perfect for everyday wear. Available in multiple colors.",
+        "price": 19.99,
+        "inStock": true,
+        "category": "Apparel",
+        "rating": 4.5
+    },
+    {
+        "id": "P002",
+        "image": "https://picsum.photos/seed/P002/400/400",
+        "title": "Stainless Steel Water Bottle",
+        "shortDescription": "Insulated 750 ml bottle keeps drinks cold for 24 h.",
+        "detailedDescription": "Double‑wall vacuum insulated stainless steel water bottle with a leak‑proof screw cap. Ideal for hiking, gym, or office use. BPA‑free and rust‑resistant.",
+        "price": 29.5,
+        "inStock": true,
+        "category": "Home & Kitchen",
+        "rating": 4.7
+    },
+    {
+        "id": "P003",
+        "image": "https://picsum.photos/seed/P003/400/400",
+        "title": "Wireless Bluetooth Earbuds",
+        "shortDescription": "True‑wireless earbuds with 5 h battery life per charge.",
+        "detailedDescription": "Compact true‑wireless earbuds featuring Bluetooth 5.2, touch controls, and a portable charging case providing up to 20 h total playback. IPX4 sweat‑resistant.",
+        "price": 59.99,
+        "inStock": false,
+        "category": "Electronics",
+        "rating": 4.2
+    },
+    {
+        "id": "P004",
+        "image": "https://picsum.photos/seed/P004/400/400",
+        "title": "Ceramic Coffee Mug Set",
+        "shortDescription": "Set of 4 12‑oz matte ceramic mugs.",
+        "detailedDescription": "A collection of four hand‑glazed matte ceramic mugs, each holding 12 oz. Microwave and dishwasher safe, with a comfortable ergonomic handle.",
+        "price": 34.0,
+        "inStock": true,
+        "category": "Home & Kitchen",
+        "rating": 4.8
+    },
+    {
+        "id": "P005",
+        "image": "https://picsum.photos/seed/P005/400/400",
+        "title": "Yoga Mat – Extra Thick",
+        "shortDescription": "6 mm thick, non‑slip yoga mat for all levels.",
+        "detailedDescription": "Eco‑friendly PVC‑free yoga mat offering 6 mm cushioning and a textured non‑slip surface. Comes with a carrying strap for easy transport.",
+        "price": 42.75,
+        "inStock": true,
+        "category": "Sports & Outdoors",
+        "rating": 4.4
+    },
+    {
+        "id": "P006",
+        "image": "https://picsum.photos/seed/P006/400/400",
+        "title": "Portable Power Bank 20000 mAh",
+        "shortDescription": "High‑capacity external battery with fast charge.",
+        "detailedDescription": "20 000 mAh slim power bank featuring dual USB‑C output, 18 W fast charging, and built‑in safety protections. Compatible with smartphones, tablets, and laptops.",
+        "price": 49.99,
+        "inStock": false,
+        "category": "Electronics",
+        "rating": 4.1
+    },
+    {
+        "id": "P007",
+        "image": "https://picsum.photos/seed/P007/400/400",
+        "title": "Bluetooth Mini Speaker",
+        "shortDescription": "Compact speaker with rich sound and 8 h playback.",
+        "detailedDescription": "A portable Bluetooth speaker delivering 360° sound, built‑in microphone for calls, and a rechargeable battery lasting up to 8 hours. Water‑resistant (IPX5).",
+        "price": 27.5,
+        "inStock": true,
+        "category": "Electronics",
+        "rating": 4.3
+    },
+    {
+        "id": "P008",
+        "image": "https://picsum.photos/seed/P008/400/400",
+        "title": "Leather Journal",
+        "shortDescription": "Hand‑stitched 200‑page notebook with elastic closure.",
+        "detailedDescription": "Premium full‑grain leather journal featuring 200 lined pages, a durable binding, and an elastic band to keep it closed. Perfect for writing, sketching, or journaling.",
+        "price": 38.2,
+        "inStock": true,
+        "category": "Office Supplies",
+        "rating": 4.9
+    },
+    {
+        "id": "P009",
+        "image": "https://picsum.photos/seed/P009/400/400",
+        "title": "LED Desk Lamp with USB Charger",
+        "shortDescription": "Adjustable brightness lamp with built‑in USB port.",
+        "detailedDescription": "Energy‑saving LED desk lamp offering three brightness levels and a flexible arm. Includes a USB‑C charging port for smartphones and tablets.",
+        "price": 22.99,
+        "inStock": false,
+        "category": "Home & Kitchen",
+        "rating": 4.6
+    },
+    {
+        "id": "P010",
+        "image": "https://picsum.photos/seed/P010/400/400",
+        "title": "Stainless Steel Chef Knife",
+        "shortDescription": "8‑inch professional chef’s knife, razor‑sharp.",
+        "detailedDescription": "High‑carbon stainless steel chef’s knife with a comfortable ergonomic handle. Ideal for slicing, dicing, and chopping a variety of ingredients.",
+        "price": 65.0,
+        "inStock": true,
+        "category": "Tools & Kitchen",
+        "rating": 4.7
+    },
+    {
+        "id": "P011",
+        "image": "https://picsum.photos/seed/P011/400/400",
+        "title": "Kids’ Educational Building Blocks",
+        "shortDescription": "120‑piece wooden block set for ages 3+.",
+        "detailedDescription": "Colorful, sustainably sourced wooden blocks encouraging creativity and motor skill development. Includes various shapes and a storage box.",
+        "price": 24.99,
+        "inStock": true,
+        "category": "Toys & Games",
+        "rating": 4.5
+    },
+    {
+        "id": "P012",
+        "image": "https://picsum.photos/seed/P012/400/400",
+        "title": "Smart Wi‑Fi Plug",
+        "shortDescription": "Control appliances remotely via app or voice.",
+        "detailedDescription": "Compact Wi‑Fi enabled plug compatible with Alexa and Google Assistant. Allows scheduling, energy monitoring, and remote on/off control through a mobile app.",
+        "price": 19.75,
+        "inStock": false,
+        "category": "Smart Home",
+        "rating": 4.0
+    }
+]
