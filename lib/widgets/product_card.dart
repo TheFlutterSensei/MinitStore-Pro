@@ -14,6 +14,7 @@ class ProductCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
+      elevation: 30,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Radii.md),
@@ -26,28 +27,32 @@ class ProductCard extends StatelessWidget {
             child: Image.network(
               product.image,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const Center(
-                child: Icon(Icons.image_not_supported_outlined),
-              ),
+              errorBuilder: (context, error, stackTrace) =>
+                  const Center(child: Icon(Icons.image_not_supported_outlined)),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(Spacing.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.title,
-                  style: textTheme.titleMedium,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: Spacing.sm),
-                Text(
-                  '\$${product.price.toStringAsFixed(2)}',
-                  style: textTheme.titleSmall,
-                ),
-              ],
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(Spacing.md),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.title,
+                    style: textTheme.titleSmall,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Spacer(),
+                  Text(
+                    '\$${product.price.toStringAsFixed(2)}',
+                    style: textTheme.titleSmall?.copyWith(
+                      color: Colors.green.shade900,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
