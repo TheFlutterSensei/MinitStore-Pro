@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ministore_pro/data/products.dart';
 import 'package:ministore_pro/screens/main_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await loadProducts();
+
+  for (final product in products) {
+    print(product.title);
+  }
+
   runApp(const MyApp());
 }
 
