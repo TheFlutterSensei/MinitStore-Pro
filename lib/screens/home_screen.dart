@@ -10,8 +10,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('MiniStore App for UI Engineering')),
-    );
+    return Scaffold();
   }
 }
