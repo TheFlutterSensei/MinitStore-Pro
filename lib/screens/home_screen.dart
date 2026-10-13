@@ -13,17 +13,34 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String _selectedCategory = 'All';
+  bool _inStockOnly = false;
+
+  List<String> get _categories => [
+    'All',
+    ...products.map((product) => product.category).toSet(),
+  ];
+
   List<Product> _filteredProducts = products;
   final TextEditingController _searchController = TextEditingController();
 
-  void _searchProducts() {
+  void _applyFilters() {
     final query = _searchController.text.trim().toLowerCase();
 
     setState(() {
       _filteredProducts = products.where((product) {
-        return product.title.toLowerCase().contains(query);
+        final matchesSearch = product.title.toLowerCase().contains(query);
+        final matchesCategory =
+            _selectedCategory == 'All' || product.category == _selectedCategory;
+        final matchesStock = !_inStockOnly || product.inStock;
+
+        return matchesSearch && matchesCategory && matchesStock;
       }).toList();
     });
+  }
+
+  void _searchProducts() {
+    _applyFilters();
   }
 
   @override
@@ -56,6 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: Spacing.md),
+              child: _buildCategoryFilters(),
+            ),
+            SizedBox(height: Spacing.md),
             Expanded(
               child: _filteredProducts.isEmpty
                   ? const Center(child: Text('No Products Available'))
@@ -75,6 +97,42 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryFilters() {
+    return SizedBox(
+      height: 40,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          ..._categories.map(
+            (category) => Padding(
+              padding: const EdgeInsets.only(right: Spacing.sm),
+              child: ChoiceChip(
+                label: Text(category),
+                selected: _selectedCategory == category,
+                onSelected: (_) {
+                  setState(() {
+                    _selectedCategory = category;
+                  });
+                  _applyFilters();
+                },
+              ),
+            ),
+          ),
+          FilterChip(
+            label: const Text('In Stock'),
+            selected: _inStockOnly,
+            onSelected: (selected) {
+              setState(() {
+                _inStockOnly = selected;
+              });
+              _applyFilters();
+            },
+          ),
+        ],
       ),
     );
   }
