@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ministore_pro/screens/cart_screen.dart';
 import 'package:ministore_pro/screens/help_screen.dart';
 import 'package:ministore_pro/screens/main_screen.dart';
 import 'package:ministore_pro/screens/profile_screen.dart';
@@ -14,7 +13,6 @@ class AppRoutes {
 
   static final Map<String, WidgetBuilder> routes = {
     home: (context) => const MainScreen(),
-    cart: (context) => const CartScreen(),
     profile: (context) => const ProfileScreen(),
     settings: (context) => const SettingsScreen(),
     help: (context) => const HelpScreen(),

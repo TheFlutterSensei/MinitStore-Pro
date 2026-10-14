@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ministore_pro/data/products.dart';
 import 'package:ministore_pro/screens/cart_screen.dart';
 import 'package:ministore_pro/screens/help_screen.dart';
 import 'package:ministore_pro/screens/home_screen.dart';
@@ -32,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
           index: _selectedScreen,
           children: [
             HomeScreen(onAddToCart: _addToCart),
-            const CartScreen(),
+            CartScreen(cart: _cart),
             const ProfileScreen(),
             const SettingsScreen(),
             const HelpScreen(),
