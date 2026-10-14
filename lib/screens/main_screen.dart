@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ministore_pro/data/products.dart';
 import 'package:ministore_pro/screens/cart_screen.dart';
 import 'package:ministore_pro/screens/help_screen.dart';
 import 'package:ministore_pro/screens/home_screen.dart';
@@ -16,6 +17,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedScreen = 0;
   final Map<Product, int> _cart = {};
+
+  void _addToCart(Product product) {
+    setState(() {
+      _cart.update(product, (quantity) => quantity + 1, ifAbsent: () => 1);
+    });
+  }
 
   final List<Widget> _screens = [
     const HomeScreen(),
