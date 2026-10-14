@@ -6,7 +6,8 @@ import 'package:ministore_pro/models/product.dart';
 import 'package:ministore_pro/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final void Function(Product product) onAddToCart;
+  const HomeScreen({super.key, required this.onAddToCart});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -91,7 +92,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisSpacing: Spacing.md,
                       ),
                       itemBuilder: (context, index) {
-                        return ProductCard(product: _filteredProducts[index]);
+                        return ProductCard(
+                          product: _filteredProducts[index],
+                          onAddToCart: widget.onAddToCart,
+                        );
                       },
                     ),
             ),

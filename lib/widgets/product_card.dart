@@ -7,9 +7,14 @@ import 'package:ministore_pro/models/product.dart';
 import 'package:ministore_pro/screens/product_details_screen.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product});
+  const ProductCard({
+    super.key,
+    required this.product,
+    required this.onAddToCart,
+  });
 
   final Product product;
+  final void Function(Product product) onAddToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,10 @@ class ProductCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailsScreen(product: product),
+            builder: (context) => ProductDetailsScreen(
+              product: product,
+              onAddToCart: onAddToCart,
+            ),
           ),
         );
       },

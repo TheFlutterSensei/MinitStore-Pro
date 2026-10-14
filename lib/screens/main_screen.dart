@@ -24,19 +24,20 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const CartScreen(),
-    const ProfileScreen(),
-    const SettingsScreen(),
-    const HelpScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: IndexedStack(index: _selectedScreen, children: _screens),
+        child: IndexedStack(
+          index: _selectedScreen,
+          children: [
+            HomeScreen(onAddToCart: _addToCart),
+            const CartScreen(),
+            const ProfileScreen(),
+            const SettingsScreen(),
+            const HelpScreen(),
+          ],
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,

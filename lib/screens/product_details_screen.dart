@@ -5,7 +5,12 @@ import 'package:ministore_pro/models/product.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
-  const ProductDetailsScreen({super.key, required this.product});
+  final void Function(Product product) onAddToCart;
+  const ProductDetailsScreen({
+    super.key,
+    required this.product,
+    required this.onAddToCart,
+  });
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -183,10 +188,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
                 onPressed: widget.product.inStock
                     ? () {
+                        widget.onAddToCart(widget.product);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Cart Functionality Coming Soon'),
-                          ),
+                          const SnackBar(content: Text('Added to Cart')),
                         );
                       }
                     : null,
