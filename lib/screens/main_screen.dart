@@ -4,6 +4,7 @@ import 'package:ministore_pro/screens/help_screen.dart';
 import 'package:ministore_pro/screens/home_screen.dart';
 import 'package:ministore_pro/screens/profile_screen.dart';
 import 'package:ministore_pro/screens/settings_screen.dart';
+import 'package:ministore_pro/models/product.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,6 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedScreen = 0;
+  final Map<Product, int> _cart = {};
 
   final List<Widget> _screens = [
     const HomeScreen(),
