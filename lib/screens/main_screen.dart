@@ -23,6 +23,31 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void _increaseQuantity(Product product) {
+    _addToCart(product);
+  }
+
+  void _decreaseQuantity(Product product) {
+    setState(() {
+      final quantity = _cart[product];
+
+      if (quantity == null) return;
+
+      if (quantity > 1) {
+        _cart[product] = quantity - 1;
+      } else {
+        _cart.remove(product);
+      }
+    });
+  }
+
+  double get _cartTotal {
+    return _cart.entries.fold(
+      0.0,
+      (total, entry) => total + entry.key.price * entry.value,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +56,12 @@ class _MainScreenState extends State<MainScreen> {
           index: _selectedScreen,
           children: [
             HomeScreen(onAddToCart: _addToCart),
-            CartScreen(cart: _cart),
+            CartScreen(
+              cart: _cart,
+              onIncrease: _increaseQuantity,
+              onDecrease: _decreaseQuantity,
+              total: _cartTotal,
+            ),
             const ProfileScreen(),
             const SettingsScreen(),
             const HelpScreen(),
