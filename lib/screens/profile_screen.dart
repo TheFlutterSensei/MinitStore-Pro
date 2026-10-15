@@ -182,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           labelText: 'Address',
                           alignLabelWithHint: true,
                         ),
-                        keyboardType: TextInputType.phone,
+                        keyboardType: TextInputType.text,
                         maxLines: 3,
                       ),
                       SizedBox(height: Spacing.md),
