@@ -3,6 +3,8 @@ import 'package:ministore_pro/contants/form_styles.dart';
 import 'package:ministore_pro/contants/radii.dart';
 import 'package:ministore_pro/contants/spacing.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -17,6 +19,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+
+  Future<void> _loadProfile() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    _nameController.text = prefs.getString('profile_name') ?? '';
+    _emailController.text = prefs.getString('profile_email') ?? '';
+    _phoneController.text = prefs.getString('profile_phone') ?? '';
+    _addressController.text = prefs.getString('profile_address') ?? '';
+  }
+
+  Future<void> _saveProfile() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString('profile_name', _nameController.text.trim());
+    await prefs.setString('profile_email', _emailController.text.trim());
+    await prefs.setString('profile_phone', _phoneController.text.trim());
+    await prefs.setString('profile_address', _addressController.text.trim());
+
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Profile saved successfully!')),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfile();
+  }
 
   @override
   void dispose() {
@@ -80,7 +112,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       right: 0,
                       child: Center(
                         child: Text(
-                          'Alex Morgan',
+                          _nameController.text.trim().isEmpty
+                              ? 'Your Name'
+                              : _nameController.text.trim(),
                           style: theme.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -157,13 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: FilledButton.icon(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              final name = _nameController.text.trim();
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Profile entered for $name'),
-                                ),
-                              );
+                              _saveProfile();
                             }
                           },
                           icon: Icon(Icons.save),
