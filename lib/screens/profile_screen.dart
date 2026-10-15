@@ -13,6 +13,20 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -84,6 +98,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFormField(
+                        controller: _nameController,
                         decoration: FormStyles.textFieldStyle.copyWith(
                           labelText: 'Name',
                         ),
@@ -97,6 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       SizedBox(height: Spacing.md),
                       TextFormField(
+                        controller: _emailController,
                         decoration: FormStyles.textFieldStyle.copyWith(
                           labelText: 'Email',
                         ),
@@ -113,6 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       SizedBox(height: Spacing.md),
                       TextFormField(
+                        controller: _phoneController,
                         decoration: FormStyles.textFieldStyle.copyWith(
                           labelText: 'Phone',
                         ),
@@ -126,6 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       SizedBox(height: Spacing.md),
                       TextFormField(
+                        controller: _addressController,
                         decoration: FormStyles.textFieldStyle.copyWith(
                           labelText: 'Address',
                           alignLabelWithHint: true,
@@ -139,9 +157,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: FilledButton.icon(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              final name = _nameController.text.trim();
+
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Profile form is valid'),
+                                SnackBar(
+                                  content: Text('Profile entered for $name'),
                                 ),
                               );
                             }
