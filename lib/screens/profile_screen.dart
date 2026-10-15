@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ministore_pro/contants/form_styles.dart';
 import 'package:ministore_pro/contants/radii.dart';
+import 'package:ministore_pro/contants/spacing.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -25,46 +27,101 @@ class _ProfileScreenState extends State<ProfileScreen> {
         foregroundColor: theme.colorScheme.onPrimaryContainer,
       ),
       body: SafeArea(
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 200,
-              decoration: BoxDecoration(
-                color: theme.colorScheme.primaryContainer,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(Radii.xl),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 320,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primaryContainer,
+                        borderRadius: const BorderRadius.vertical(
+                          bottom: Radius.circular(Radii.xl),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 120,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 60,
+                          backgroundImage: NetworkImage(
+                            'https://picsum.photos/id/64/300/300',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 255,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: Text(
+                          'Alex Morgan',
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Positioned(
-              top: 120,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: NetworkImage(
-                    'https://picsum.photos/id/64/300/300',
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(Spacing.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    TextField(
+                      decoration: FormStyles.textFieldStyle.copyWith(
+                        labelText: 'Name',
+                      ),
+                      keyboardType: TextInputType.text,
+                    ),
+                    SizedBox(height: Spacing.md),
+                    TextField(
+                      decoration: FormStyles.textFieldStyle.copyWith(
+                        labelText: 'Email',
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(height: Spacing.md),
+                    TextField(
+                      decoration: FormStyles.textFieldStyle.copyWith(
+                        labelText: 'Phone',
+                      ),
+                      keyboardType: TextInputType.phone,
+                    ),
+                    SizedBox(height: Spacing.md),
+                    TextField(
+                      decoration: FormStyles.textFieldStyle.copyWith(
+                        labelText: 'Address',
+                        alignLabelWithHint: true,
+                      ),
+                      keyboardType: TextInputType.phone,
+                      maxLines: 3,
+                    ),
+                    SizedBox(height: Spacing.md),
+                    SizedBox(
+                      height: 60,
+                      child: FilledButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.save),
+                        label: const Text('Save Profile'),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Positioned(
-              top: 255,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Text(
-                  'Alex Morgan',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
