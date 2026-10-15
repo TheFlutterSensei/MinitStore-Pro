@@ -11,6 +11,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -76,48 +78,80 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(Spacing.md),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextField(
-                      decoration: FormStyles.textFieldStyle.copyWith(
-                        labelText: 'Name',
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      TextFormField(
+                        decoration: FormStyles.textFieldStyle.copyWith(
+                          labelText: 'Name',
+                        ),
+                        keyboardType: TextInputType.text,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter your name';
+                          }
+                          return null;
+                        },
                       ),
-                      keyboardType: TextInputType.text,
-                    ),
-                    SizedBox(height: Spacing.md),
-                    TextField(
-                      decoration: FormStyles.textFieldStyle.copyWith(
-                        labelText: 'Email',
+                      SizedBox(height: Spacing.md),
+                      TextFormField(
+                        decoration: FormStyles.textFieldStyle.copyWith(
+                          labelText: 'Email',
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter your email';
+                          }
+                          if (!value.contains('@') || !value.contains('.')) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
                       ),
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    SizedBox(height: Spacing.md),
-                    TextField(
-                      decoration: FormStyles.textFieldStyle.copyWith(
-                        labelText: 'Phone',
+                      SizedBox(height: Spacing.md),
+                      TextFormField(
+                        decoration: FormStyles.textFieldStyle.copyWith(
+                          labelText: 'Phone',
+                        ),
+                        keyboardType: TextInputType.phone,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter your phone number';
+                          }
+                          return null;
+                        },
                       ),
-                      keyboardType: TextInputType.phone,
-                    ),
-                    SizedBox(height: Spacing.md),
-                    TextField(
-                      decoration: FormStyles.textFieldStyle.copyWith(
-                        labelText: 'Address',
-                        alignLabelWithHint: true,
+                      SizedBox(height: Spacing.md),
+                      TextFormField(
+                        decoration: FormStyles.textFieldStyle.copyWith(
+                          labelText: 'Address',
+                          alignLabelWithHint: true,
+                        ),
+                        keyboardType: TextInputType.phone,
+                        maxLines: 3,
                       ),
-                      keyboardType: TextInputType.phone,
-                      maxLines: 3,
-                    ),
-                    SizedBox(height: Spacing.md),
-                    SizedBox(
-                      height: 60,
-                      child: FilledButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.save),
-                        label: const Text('Save Profile'),
+                      SizedBox(height: Spacing.md),
+                      SizedBox(
+                        height: 60,
+                        child: FilledButton.icon(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Profile form is valid'),
+                                ),
+                              );
+                            }
+                          },
+                          icon: Icon(Icons.save),
+                          label: const Text('Save Profile'),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
