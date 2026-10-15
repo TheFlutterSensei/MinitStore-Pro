@@ -6,10 +6,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadProducts();
 
-  for (final product in products) {
-    print(product.title);
-  }
-
   runApp(const MyApp());
 }
 
