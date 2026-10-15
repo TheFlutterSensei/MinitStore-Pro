@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ministore_pro/contants/radii.dart';
 import 'package:ministore_pro/contants/spacing.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,6 +15,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _notifications = true;
   bool _soundEffects = true;
   bool _vibration = true;
+
+  Future<void> _loadSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (!mounted) return;
+
+    setState(() {
+      _darkMode = prefs.getBool('dark_mode') ?? false;
+      _notifications = prefs.getBool('notifications') ?? true;
+      _soundEffects = prefs.getBool('sound_effects') ?? true;
+      _vibration = prefs.getBool('vibration') ?? true;
+    });
+  }
+
+  Future<void> _saveSetting(String key, bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(key, value);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSettings();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   setState(() {
                     _darkMode = value;
                   });
+                  _saveSetting('dark_mode', value);
                 },
               ),
 
@@ -69,6 +95,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   setState(() {
                     _notifications = value;
                   });
+                  _saveSetting('notifications', value);
                 },
               ),
 
@@ -85,6 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   setState(() {
                     _soundEffects = value;
                   });
+                  _saveSetting('sound_effects', value);
                 },
               ),
 
@@ -101,6 +129,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   setState(() {
                     _vibration = value;
                   });
+                  _saveSetting('vibration', value);
                 },
               ),
             ],
